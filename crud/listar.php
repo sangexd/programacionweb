@@ -19,6 +19,7 @@
 					<th>Apellidos y Nombres</th>
 					<th>Fecha Creacion</th>
 					<th>Modificar</th>
+					<th>Eliminar</th>
 				<tr>
 				<?php 
 					$consulta=$conexion->query('SELECT p.* FROM personas p');
@@ -32,6 +33,11 @@
 							<td>
 								<a href="modificar.php? id=<?php echo $fila['persona_id'];?>">
 									<span class="glyphicon glyphicon-edit"></span>
+								</a>
+							</td>
+							<td>
+								<a href="eliminar.php? id=<?php echo $fila['persona_id'];?>">
+									<span class="glyphicon glyphicon-trash"></span>
 								</a>
 							</td>
 					<?php
