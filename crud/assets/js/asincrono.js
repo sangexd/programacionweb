@@ -41,10 +41,13 @@ $(
 			alert("Servicio");
 		});
 		$("#a-nuevo").on("click", function(){
-			alert("Nuevo");				
+			alert("Nuevo");			
 		});
 		$("#a-inicio").on("click", function(){
-			alert("Inicio");
+			//alert("Inicio");
+			herramienta.saluda();
+			herramienta.getNombre();	
+			herramienta.input("body");
 		});
 		$("#a-producto").on("click", function(){
 			alert("Productos");
