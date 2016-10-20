@@ -19,25 +19,24 @@
 		<script src="crud/assets/js/jquery-3.1.1.js"></script>
 		<script src="crud/assets/js/bootstrap.min.js"></script>
 		<script src="crud/assets/js/herramientas.js"></script>
-
 		<script type="text/javascript">
-		p={"paterno":"Flores",
-			"materno":"Condori",
-			"nombres":"Juan"},{"paterno":"Mamani"};
-
-			function mostrar(persona){
-				tabla=$("<table>");
-				cabecera=$("<tr>").append(
-						$("<th>").text("Paterno -"),
-						$("<th>").text("Materno -"),
-						$("<th>").text("Nombres"));
-				datos=$("<tr>").append(
-						$("<td>").text(persona.paterno),
-						$("<td>").text(persona.materno),
-						$("<td>").text(persona.nombres));
-					$("body").append(tabla).append(cabecera, datos);
-				}
-				mostrar(p);
+			var lista;
+			lista=$("<ol>");
+			$.ajax({method:"post",url:"listar-json.php",dataType:"json"})
+			.done(function(response){
+				console.log(response.personas[0].nombres);
+				
+					if(response.success){
+						console.log("if");
+						$.each(response.personas, function(i,persona){
+							console.log(persona.nombres);
+							lista.append($("<li>").text(persona.nombres));
+						});
+					}else{
+						lista.append($("<li>").text("Error"));
+					}
+			});
+			$("body").append(lista);
 		</script>
 	</body>
 </html>
